@@ -2,90 +2,90 @@
 
 This workspace consists of Java EE 8 Samples and unit tests. They are categorized in different directories, one for each Technology/JSR.
 
-Some samples/tests have documentation, otherwise read the code. 
+Some samples/tests have documentation, otherwise read the code.
 
 ## How to run? ##
 
-Samples are tested on Payara, GlassFish and Tomcat using Arquillian. Arquillian uses container profiles to start up and deploy tests to individual containers. 
+Samples are tested on Payara, GlassFish and Tomcat using Arquillian. Arquillian uses container profiles to start up and deploy tests to individual containers.
 
 Only one container profile can be active at a given time, otherwise there will be dependency conflicts.
 
 These are the available container profiles:
 
 * Payara and GlassFish
-  * ``payara-ci-managed``
-    
+  * ``payara-server-managed``
+
       This profile will install a Payara server and start up the server per sample.
       Useful for CI servers. The Payara version that's used can be set via the ``payara.version`` property.
       This is the default profile and does not have to be specified explicitly.
 
    * ``payara-micro-managed``
-    
+
       This profile will install Payara Micro and start up the jar per sample.
       Useful for CI servers. The Payara Micro version that's used can be set via the ``payara.micro.version`` property.
 
-  * ``payara-remote``
-    
+  * ``payara-server-remote``
+
       This profile requires you to start up a Payara server outside of the build. Each sample will then
       reuse this instance to run the tests.
       Useful for development to avoid the server start up cost per sample.
-      
+
       This profile supports for some tests to set the location where Payara is installed via the ``glassfishRemote_gfHome``
       system property. E.g.
-    
+
       ``-DglassfishRemote_gfHome=/opt/payara173``
-      
+
       This is used for sending asadmin commands to create container resources, such as users in an identity store.
 
   * ``glassfish-embedded``
-    
+
       This profile uses the GlassFish embedded server and runs in the same JVM as the TestClass.
       Useful for development, but has the downside of server startup per sample.
 
   * ``glassfish-remote``
-    
+
       This profile requires you to start up a GlassFish server outside of the build. Each sample will then
       reuse this instance to run the tests.
       Useful for development to avoid the server start up cost per sample.
-      
+
       This profile supports for some tests to set the location where GlassFish is installed via the ``glassfishRemote_gfHome``
       system property. E.g.
-    
+
       ``-DglassfishRemote_gfHome=/opt/glassfish50``
-      
+
       This is used for sending asadmin commands to create container resources, such as users in an identity store.
 
 * Tomcat
-    
+
   * ``tomcat-remote``
 
       This profile requires you to start up a plain Tomcat 9 server outside of the build. Each sample will then
       reuse this instance to run the tests.
-    
+
       Tomcat supports samples that make use of Servlet, JSP, Expression Language (EL), WebSocket and JASPIC.
-    
+
       This profile requires you to enable JMX in Tomcat. This can be done by adding the following to ``[tomcat home]/bin/catalina.sh``:
-    
+
       ```
       JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.port=8089 -Dcom.sun.management.jmxremote=true "
       JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false "
       JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false"
       JAVA_OPTS="$JAVA_OPTS -Djava.rmi.server.hostname=localhost "
       ```
-    
-      This profile also requires you to set a username (``tomcat``) and password (``manager``) for the management application in 
+
+      This profile also requires you to set a username (``tomcat``) and password (``manager``) for the management application in
       ``tomcat-users.xml``. See the file ``test-utils/src/main/resources/tomcat-users.xml`` in this repository for a full example.
-    
+
       Be aware that this should *only* be done for a Tomcat instance that's used exclusively for testing, as the above will make
       the Tomcat installation **totally insecure!**
-    
+
   * ``tomcat-ci-managed``
 
       This profile will install a Tomcat server and start up the server per sample.
       Useful for CI servers. The Tomcat version that's used can be set via the ``tomcat.version`` property.
-      
-   
-    
+
+
+
 The containers that download and install a server (the \*-ci-managed profiles) allow you to override the version used, e.g.:
 
 * `-Dpayara.version=5.0.0.174`
@@ -146,7 +146,7 @@ CI jobs are executed by [Travis](https://travis-ci.org/javaee-samples/javaee8-sa
 
 * Install Docker client from http://boot2docker.io
 * Build the sample that you want to run as
-  
+
   ``mvn clean package -DskipTests``
 
   For example: (note the exact module doens't exist yet, wip here)
@@ -163,4 +163,3 @@ CI jobs are executed by [Travis](https://travis-ci.org/javaee-samples/javaee8-sa
   ``boot2docker ip``
 
 * Access the sample as http://IP_ADDRESS:80/jaxrs-client/webresources/persons. The exact URL would differ based upon the sample.
-
