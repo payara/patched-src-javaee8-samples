@@ -342,7 +342,7 @@
 
 
         <profile>
-            <id>payara-ci-managed</id>
+            <id>payara-server-managed</id>
 
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -358,7 +358,7 @@
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>arquillian-payara-server-4-managed</artifactId>
-                    <version>1.0.Beta3-m3</version>
+                    <version>1.0.Beta3</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -419,7 +419,7 @@
         </profile>
 
         <profile>
-            <id>payara-embedded</id>
+            <id>payara-server-embedded</id>
             <dependencies>
                 <dependency>
                     <groupId>fish.payara.extras</groupId>
@@ -474,7 +474,7 @@
         </profile>
 
         <profile>
-            <id>payara-remote</id>
+            <id>payara-server-remote</id>
 
             <dependencies>
                 <dependency>
@@ -486,7 +486,7 @@
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>arquillian-payara-server-4-remote</artifactId>
-                    <version>1.0.Beta3-m3</version>
+                    <version>1.0.Beta3</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -503,7 +503,6 @@
                 </plugins>
             </build>
         </profile>
-
 
         <profile>
             <id>payara-micro-managed</id>
@@ -524,7 +523,7 @@
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>arquillian-payara-micro-5-managed</artifactId>
-                    <version>1.0.Beta3-m4</version>
+                    <version>1.0.Beta3</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
