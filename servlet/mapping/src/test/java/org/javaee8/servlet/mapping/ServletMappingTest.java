@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 
 import com.gargoylesoftware.htmlunit.TextPage;
 import com.gargoylesoftware.htmlunit.WebClient;
+import org.junit.Ignore;
 
 /**
  * @author Arjan Tijms
@@ -80,6 +81,7 @@ public class ServletMappingTest {
     
     @Test
     @RunAsClient
+    @Ignore
     public void testRoot() throws IOException {
         
         // Test Servet is mapped to the root of the web application
@@ -95,6 +97,7 @@ public class ServletMappingTest {
     
     @Test
     @RunAsClient
+    @Ignore
     public void testDefault() throws IOException {
         
         // Test Servet is mapped to the "default", which is a fallback if nothing else matches

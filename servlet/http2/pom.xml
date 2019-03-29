@@ -432,7 +432,7 @@
                 <alpn.version>8.1.13.v20181017</alpn.version>
             </properties>
         </profile>
->>>>>>> upstream/master
+
     </profiles>
 
 </project>
