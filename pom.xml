@@ -365,6 +365,7 @@
                     <artifactId>arquillian-payara-server-4-managed</artifactId>
                     <version>1.0.Beta3</version>
                     <scope>test</scope>
+                    <optional>true</optional>
                 </dependency>
             </dependencies>
 
@@ -431,6 +432,7 @@
                     <artifactId>payara-embedded-all</artifactId>
                     <version>${payara.version}</version>
                     <scope>test</scope>
+                    <optional>true</optional>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish</groupId>
@@ -462,6 +464,7 @@
                     <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
                     <version>1.0.0.Final</version>
                     <scope>test</scope>
+                    <optional>true</optional>
                 </dependency>
             </dependencies>
             <build>
@@ -493,6 +496,7 @@
                     <artifactId>arquillian-payara-server-4-remote</artifactId>
                     <version>1.0.Beta3</version>
                     <scope>test</scope>
+                    <optional>true</optional>
                 </dependency>
             </dependencies>
             <build>
@@ -530,6 +534,7 @@
                     <artifactId>arquillian-payara-micro-5-managed</artifactId>
                     <version>1.0.Beta3</version>
                     <scope>test</scope>
+                    <optional>true</optional>
                 </dependency>
             </dependencies>
 
