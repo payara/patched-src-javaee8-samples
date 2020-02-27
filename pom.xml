@@ -22,6 +22,8 @@
         <skipCDI>${skipTests}</skipCDI>
         <skipJSF>${skipTests}</skipJSF>
         <skipJACC>${skipTests}</skipJACC>
+        
+        <payara.arquillian.version>2.2</payara.arquillian.version>
 
         <!-- Application Server versions (these are downloaded and installed
             in these versions by Maven for the CI profiles) -->
@@ -133,7 +135,7 @@
             <dependency>
                 <groupId>fish.payara.arquillian</groupId>
                 <artifactId>payara-client-ee8</artifactId>
-                <version>2.0</version>
+                <version>${payara.arquillian.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -363,7 +365,7 @@
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>arquillian-payara-server-managed</artifactId>
-                    <version>2.0</version>
+                    <version>${payara.arquillian.version}</version>
                     <scope>test</scope>
                     <optional>true</optional>
                 </dependency>
@@ -462,7 +464,7 @@
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>arquillian-payara-server-embedded</artifactId>
-                    <version>2.0</version>
+                    <version>${payara.arquillian.version}</version>
                     <scope>test</scope>
                     <optional>true</optional>
                 </dependency>
@@ -494,7 +496,7 @@
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>arquillian-payara-server-remote</artifactId>
-                    <version>2.0</version>
+                    <version>${payara.arquillian.version}</version>
                     <scope>test</scope>
                     <optional>true</optional>
                 </dependency>
@@ -532,7 +534,7 @@
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>arquillian-payara-micro-managed</artifactId>
-                    <version>2.0</version>
+                    <version>${payara.arquillian.version}</version>
                     <scope>test</scope>
                     <optional>true</optional>
                 </dependency>
