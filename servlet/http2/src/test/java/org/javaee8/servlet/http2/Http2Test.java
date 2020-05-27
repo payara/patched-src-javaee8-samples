@@ -1,21 +1,17 @@
 package org.javaee8.servlet.http2;
 
 import static org.jboss.shrinkwrap.api.ShrinkWrap.create;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.Response;
-
-import org.glassfish.jersey.client.ClientConfig;
-import org.hamcrest.Matchers;
+import org.eclipse.jetty.client.HttpClient;
+import org.eclipse.jetty.http.HttpVersion;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
@@ -23,7 +19,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 
 /**
  * Test for the HTTP/2 and the JAX-RS client
@@ -33,10 +28,9 @@ public class Http2Test {
 
     @ArquillianResource
     private URL basicUrl;
-    private Client jaxrsClient;
+    private HttpClient client;
 
-
-    @Deployment
+    @Deployment(testable = false)
     public static WebArchive createDeployment() {
         final WebArchive war = create(WebArchive.class).addClasses(Servlet.class)
                 .addAsWebResource(new File("src/main/webapp/images/payara-logo.jpg"), "images/payara-logo.jpg")
@@ -48,16 +42,14 @@ public class Http2Test {
 
     @Before
     public void setup() throws Exception {
-        ClientConfig config = new ClientConfig();
-        config.connectorProvider(JettyConnector::new);
-        jaxrsClient = ClientBuilder.newClient(config);
+        client = new HttpClient();
+        client.start();
     }
 
     @After
     public void cleanUp() throws Exception {
-        jaxrsClient.close();
+        client.stop();
     }
-
 
     /**
      * This test runs against the public website supporting HTTP/2
@@ -65,10 +57,8 @@ public class Http2Test {
      * @throws Exception
      */
     @Test(timeout = 10000L)
-    @RunAsClient
     public void testHttp2ControlGroup() throws Exception {
-        Response response = testUri(new URI("https://http2.akamai.com/"));
-        assertThat("myproto header", response.getHeaderString("myproto"), Matchers.equalTo("h2"));
+        testHttp2(new URI("https://http2.akamai.com/"));
     }
 
     /**
@@ -77,18 +67,11 @@ public class Http2Test {
      * @throws Exception
      */
     @Test(timeout = 10000L)
-    @RunAsClient
     public void testServerHttp2() throws Exception {
-        Response response = testUri(basicUrl.toURI());
-        // the header 'protocol' is set in the Servlet class.
-        assertThat(
-            "Request wasn't over HTTP/2. Either the wrong servlet was returned, or the server doesn't support HTTP/2.",
-            response.getHeaderString("protocol"), Matchers.equalTo("HTTP/2"));
+        testHttp2(basicUrl.toURI());
     }
 
-    private Response testUri(URI uri) {
-        Response response = jaxrsClient.target(uri).request().get();
-        assertNotNull("response", response);
-        return response;
+    private void testHttp2(URI uri) throws InterruptedException, ExecutionException, TimeoutException {
+        assertEquals("Request wasn't over HTTP/2", HttpVersion.HTTP_2, client.GET(uri).getVersion());
     }
 }

@@ -27,6 +27,12 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty.http2</groupId>
+            <artifactId>http2-http-client-transport</artifactId>
+            <version>${jetty-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.http2</groupId>
             <artifactId>http2-common</artifactId>
             <version>${jetty-version}</version>
             <scope>test</scope>
@@ -432,7 +438,78 @@
                 <alpn.version>8.1.13.v20181017</alpn.version>
             </properties>
         </profile>
-
+        <profile>
+            <id>alpn-when-jdk8_211</id>
+            <activation>
+                <jdk>1.8.0_211</jdk>
+            </activation>
+            <properties>
+                <alpn.version>8.1.13.v20181017</alpn.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>alpn-when-jdk8_212</id>
+            <activation>
+                <jdk>1.8.0_212</jdk>
+            </activation>
+            <properties>
+                <alpn.version>8.1.13.v20181017</alpn.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>alpn-when-jdk8_221</id>
+            <activation>
+                <jdk>1.8.0_221</jdk>
+            </activation>
+            <properties>
+                <alpn.version>8.1.13.v20181017</alpn.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>alpn-when-jdk8_222</id>
+            <activation>
+                <jdk>1.8.0_222</jdk>
+            </activation>
+            <properties>
+                <alpn.version>8.1.13.v20181017</alpn.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>alpn-when-jdk8_231</id>
+            <activation>
+                <jdk>1.8.0_231</jdk>
+            </activation>
+            <properties>
+                <alpn.version>8.1.13.v20181017</alpn.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>alpn-when-jdk8_232</id>
+            <activation>
+                <jdk>1.8.0_232</jdk>
+            </activation>
+            <properties>
+                <alpn.version>8.1.13.v20181017</alpn.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>alpn-when-jdk8_241</id>
+            <activation>
+                <jdk>1.8.0_241</jdk>
+            </activation>
+            <properties>
+                <alpn.version>8.1.13.v20181017</alpn.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>alpn-when-jdk8_242</id>
+            <activation>
+                <jdk>1.8.0_242</jdk>
+            </activation>
+            <properties>
+                <alpn.version>8.1.13.v20181017</alpn.version>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
