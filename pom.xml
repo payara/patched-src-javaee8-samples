@@ -22,8 +22,8 @@
         <skipCDI>${skipTests}</skipCDI>
         <skipJSF>${skipTests}</skipJSF>
         <skipJACC>${skipTests}</skipJACC>
-        
-        <payara.arquillian.version>2.2</payara.arquillian.version>
+
+        <payara.arquillian.version>2.3</payara.arquillian.version>
 
         <!-- Application Server versions (these are downloaded and installed
             in these versions by Maven for the CI profiles) -->
@@ -870,24 +870,24 @@
                     </dependency>
                 </dependencies>
             </dependencyManagement>
-    
+
             <dependencies>
-    
-                <!-- Java EE based client dependencies to contact a server via 
+
+                <!-- Java EE based client dependencies to contact a server via
                     WebSocket or REST -->
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>payara-client-ee8</artifactId>
                 </dependency>
-    
+
                 <dependency>
                     <groupId>io.thorntail</groupId>
                     <artifactId>arquillian</artifactId>
                     <scope>test</scope>
                 </dependency>
-    
+
             </dependencies>
-    
+
             <build>
                 <plugins>
                     <plugin>
