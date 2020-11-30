@@ -31,6 +31,7 @@
         <glassfish.version>5.0</glassfish.version>
         <tomcat.version>9.0.12</tomcat.version>
         <thorntail.version>2.3.0.Final</thorntail.version>
+	<payara_domain>production</payara_domain>
     </properties>
 
     <repositories>
