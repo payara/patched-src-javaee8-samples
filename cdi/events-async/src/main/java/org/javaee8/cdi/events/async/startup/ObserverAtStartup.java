@@ -4,10 +4,10 @@
 
 package org.javaee8.cdi.events.async.startup;
 
-import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
-import javax.enterprise.event.Observes;
-import javax.enterprise.event.ObservesAsync;
+import jakarta.annotation.PostConstruct;
+import jakarta.ejb.Singleton;
+import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.event.ObservesAsync;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.INFO;

@@ -1,9 +1,9 @@
 package org.javaee8.cdi.dynamic.bean;
 
-import static javax.faces.annotation.FacesConfig.Version.JSF_2_3;
+import static jakarta.faces.annotation.FacesConfig.Version.JSF_2_3;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.annotation.FacesConfig;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.annotation.FacesConfig;
 
 /**
  * This class is needed to activate JSF and configure it to be the 

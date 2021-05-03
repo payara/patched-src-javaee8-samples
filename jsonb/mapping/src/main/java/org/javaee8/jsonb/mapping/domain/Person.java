@@ -1,8 +1,8 @@
 package org.javaee8.jsonb.mapping.domain;
 
 import java.io.Serializable;
-import javax.json.bind.annotation.JsonbProperty;
-import javax.json.bind.annotation.JsonbTransient;
+import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 /**
  * 

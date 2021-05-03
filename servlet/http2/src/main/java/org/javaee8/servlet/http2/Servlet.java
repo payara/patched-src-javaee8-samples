@@ -4,13 +4,13 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.PushBuilder;
-import javax.ws.rs.core.MediaType;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.PushBuilder;
+import jakarta.ws.rs.core.MediaType;
 
 @WebServlet("/test")
 public class Servlet extends HttpServlet {

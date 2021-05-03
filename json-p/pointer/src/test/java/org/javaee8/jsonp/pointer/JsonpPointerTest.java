@@ -1,11 +1,11 @@
 package org.javaee8.jsonp.pointer;
 
 import java.math.BigDecimal;
-import javax.json.Json;
-import javax.json.JsonMergePatch;
-import javax.json.JsonObject;
-import javax.json.JsonPointer;
-import javax.json.JsonValue;
+import jakarta.json.Json;
+import jakarta.json.JsonMergePatch;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonPointer;
+import jakarta.json.JsonValue;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;

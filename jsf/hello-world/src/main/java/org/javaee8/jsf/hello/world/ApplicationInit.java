@@ -1,8 +1,8 @@
 /** Copyright Payara Services Limited **/
 package org.javaee8.jsf.hello.world;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.annotation.FacesConfig;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.annotation.FacesConfig;
 
 /**
  * This class is needed to activate JSF and configure it to be the

@@ -1,6 +1,6 @@
 package org.javaee8.cdi.dynamic.bean;
 
-import javax.enterprise.inject.Typed;
+import jakarta.enterprise.inject.Typed;
 
 /**
  * 

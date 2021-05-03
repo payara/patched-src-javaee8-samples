@@ -1,9 +1,9 @@
 package org.javaee8.jpa.dynamic.tx.util;
 
-import static javax.transaction.Transactional.TxType.REQUIRED;
+import static jakarta.transaction.Transactional.TxType.REQUIRED;
 
-import javax.enterprise.util.AnnotationLiteral;
-import javax.transaction.Transactional;
+import jakarta.enterprise.util.AnnotationLiteral;
+import jakarta.transaction.Transactional;
 
 @SuppressWarnings("all")
 public class TransactionLiteral extends AnnotationLiteral<Transactional> implements Transactional {

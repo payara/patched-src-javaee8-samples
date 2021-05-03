@@ -1,7 +1,7 @@
 package org.javaee8.security.dynamic.rememberme.util;
 
-import javax.enterprise.util.AnnotationLiteral;
-import javax.security.enterprise.authentication.mechanism.http.RememberMe;
+import jakarta.enterprise.util.AnnotationLiteral;
+import jakarta.security.enterprise.authentication.mechanism.http.RememberMe;
 
 @SuppressWarnings("all")
 public class RememberMeAnnotationLiteral extends AnnotationLiteral<RememberMe> implements RememberMe {
