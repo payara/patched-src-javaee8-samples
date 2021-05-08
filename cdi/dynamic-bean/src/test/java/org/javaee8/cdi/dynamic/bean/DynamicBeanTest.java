@@ -4,7 +4,7 @@ import static org.jboss.shrinkwrap.api.ShrinkWrap.create;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.hamcrest.Matchers;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -28,7 +28,7 @@ public class DynamicBeanTest {
                 .addAsLibraries(
                     create(JavaArchive.class)
                         .addClasses(CdiExtension.class, MyBean.class, MyBeanImpl.class)
-                        .addAsResource("META-INF/services/javax.enterprise.inject.spi.Extension"))
+                        .addAsResource("META-INF/services/jakarta.enterprise.inject.spi.Extension"))
                 .addAsWebInfResource("beans.xml");
     }
 

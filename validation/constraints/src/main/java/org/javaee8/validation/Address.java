@@ -1,6 +1,6 @@
 package org.javaee8.validation;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 /**
  * @author mertcaliskan

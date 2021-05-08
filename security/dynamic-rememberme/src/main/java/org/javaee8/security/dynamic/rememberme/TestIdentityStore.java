@@ -1,14 +1,14 @@
 package org.javaee8.security.dynamic.rememberme;
 
 import static java.util.Arrays.asList;
-import static javax.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
+import static jakarta.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
 
 import java.util.HashSet;
 
-import javax.enterprise.context.RequestScoped;
-import javax.security.enterprise.credential.UsernamePasswordCredential;
-import javax.security.enterprise.identitystore.CredentialValidationResult;
-import javax.security.enterprise.identitystore.IdentityStore;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.security.enterprise.credential.UsernamePasswordCredential;
+import jakarta.security.enterprise.identitystore.CredentialValidationResult;
+import jakarta.security.enterprise.identitystore.IdentityStore;
 
 @RequestScoped
 public class TestIdentityStore implements IdentityStore {

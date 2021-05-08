@@ -2,10 +2,10 @@ package org.javaee8.cdi.events.async;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
-import javax.enterprise.event.ObservesAsync;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.event.ObservesAsync;
+import jakarta.inject.Inject;
 
 /**
  * @author Radim Hanus

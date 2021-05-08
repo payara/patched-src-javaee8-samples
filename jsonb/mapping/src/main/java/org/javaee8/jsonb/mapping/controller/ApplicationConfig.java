@@ -2,14 +2,14 @@ package org.javaee8.jsonb.mapping.controller;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.ws.rs.core.Application;
+import jakarta.ws.rs.core.Application;
 
 /**
  *
  * @author Gaurav Gupta
  *
  */
-@javax.ws.rs.ApplicationPath("resources")
+@jakarta.ws.rs.ApplicationPath("resources")
 public class ApplicationConfig extends Application {
 
     @Override

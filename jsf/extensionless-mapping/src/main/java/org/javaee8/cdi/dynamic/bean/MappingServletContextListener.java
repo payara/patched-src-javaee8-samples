@@ -1,17 +1,17 @@
 package org.javaee8.cdi.dynamic.bean;
 
-import static javax.faces.application.ViewVisitOption.RETURN_AS_MINIMAL_IMPLICIT_OUTCOME;
+import static jakarta.faces.application.ViewVisitOption.RETURN_AS_MINIMAL_IMPLICIT_OUTCOME;
 
 import java.util.Map;
 
-import javax.faces.application.Application;
-import javax.faces.context.FacesContext;
-import javax.faces.webapp.FacesServlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletRegistration;
-import javax.servlet.annotation.WebListener;
+import jakarta.faces.application.Application;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.webapp.FacesServlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.ServletRegistration;
+import jakarta.servlet.annotation.WebListener;
 
 @WebListener
 public class MappingServletContextListener implements ServletContextListener {

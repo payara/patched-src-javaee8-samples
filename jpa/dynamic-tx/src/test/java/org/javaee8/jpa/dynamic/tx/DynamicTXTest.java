@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 
 import java.io.File;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.hamcrest.Matchers;
 import org.javaee8.jpa.dynamic.tx.ApplicationInit;

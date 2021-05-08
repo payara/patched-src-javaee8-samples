@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.net.URL;
 
-import javax.servlet.http.MappingMatch;
+import jakarta.servlet.http.MappingMatch;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;

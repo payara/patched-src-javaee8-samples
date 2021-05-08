@@ -2,11 +2,11 @@ package org.javaee8.cdi.interception.factory;
 
 import java.util.logging.Logger;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InterceptionFactory;
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.enterprise.inject.Produces;
+import jakarta.enterprise.inject.spi.InterceptionFactory;
 
 @Alternative
 @Priority(500)

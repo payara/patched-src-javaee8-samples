@@ -1,9 +1,9 @@
 package org.javaee8.jpa.stream.repository;
 
 import java.util.stream.Stream;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaQuery;
 import org.javaee8.jpa.stream.domain.Person;
 
 /**

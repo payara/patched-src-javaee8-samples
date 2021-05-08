@@ -38,7 +38,7 @@
 package org.javaee8.security.jwt;
 
 import java.util.Set;
-import javax.security.enterprise.credential.Credential;
+import jakarta.security.enterprise.credential.Credential;
 
 public class JWTCredential implements Credential {
 

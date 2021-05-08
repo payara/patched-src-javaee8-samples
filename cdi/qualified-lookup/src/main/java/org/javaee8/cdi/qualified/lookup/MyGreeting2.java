@@ -1,6 +1,6 @@
 package org.javaee8.cdi.qualified.lookup;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 @Named("informal")
 public class MyGreeting2 implements MyGreeting {

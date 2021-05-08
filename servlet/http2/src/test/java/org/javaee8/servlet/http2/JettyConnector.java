@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.core.Configuration;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.core.Configuration;
 
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.http.HttpURI;

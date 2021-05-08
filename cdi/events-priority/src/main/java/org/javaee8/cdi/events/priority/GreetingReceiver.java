@@ -1,12 +1,12 @@
 package org.javaee8.cdi.events.priority;
 
-import static javax.interceptor.Interceptor.Priority.APPLICATION;
+import static jakarta.interceptor.Interceptor.Priority.APPLICATION;
 
 import java.io.Serializable;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.SessionScoped;
-import javax.enterprise.event.Observes;
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.enterprise.event.Observes;
 
 /**
  * @author Radim Hanus

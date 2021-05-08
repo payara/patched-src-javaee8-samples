@@ -4,15 +4,15 @@ import static java.util.stream.Collectors.toSet;
 
 import java.util.logging.Logger;
 
-import javax.annotation.Priority;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.Bean;
-import javax.enterprise.inject.spi.BeanManager;
-import javax.enterprise.inject.spi.InterceptionFactory;
-import javax.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
-import javax.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Alternative;
+import jakarta.enterprise.inject.Produces;
+import jakarta.enterprise.inject.spi.Bean;
+import jakarta.enterprise.inject.spi.BeanManager;
+import jakarta.enterprise.inject.spi.InterceptionFactory;
+import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
 
 import org.javaee8.security.dynamic.rememberme.util.HttpAuthenticationMechanismWrapper;
 import org.javaee8.security.dynamic.rememberme.util.RememberMeAnnotationLiteral;

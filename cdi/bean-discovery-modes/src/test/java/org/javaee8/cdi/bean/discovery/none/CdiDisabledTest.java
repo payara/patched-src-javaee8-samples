@@ -2,8 +2,8 @@ package org.javaee8.cdi.bean.discovery.none;
 
 import static org.junit.Assert.assertTrue;
 
-import javax.enterprise.inject.spi.BeanManager;
-import javax.inject.Inject;
+import jakarta.enterprise.inject.spi.BeanManager;
+import jakarta.inject.Inject;
 
 import org.javaee8.cdi.bean.discovery.disabled.CdiDisabledBean;
 import org.javaee8.cdi.bean.discovery.enabled.CdiEnabledBean;

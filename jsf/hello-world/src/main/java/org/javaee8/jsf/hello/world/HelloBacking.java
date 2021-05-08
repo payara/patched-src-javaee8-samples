@@ -1,8 +1,8 @@
 /** Copyright Payara Services Limited **/
 package org.javaee8.jsf.hello.world;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 
 @Named
 @RequestScoped

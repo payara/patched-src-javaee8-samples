@@ -3,7 +3,7 @@ package org.javaee8.jpa.stream.controller;
 import java.util.stream.Stream;
 import org.javaee8.jpa.stream.repository.PersonRepository;
 import org.javaee8.jpa.stream.domain.Person;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
