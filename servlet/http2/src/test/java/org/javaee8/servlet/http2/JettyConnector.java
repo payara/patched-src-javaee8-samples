@@ -34,10 +34,11 @@ import org.glassfish.jersey.client.spi.AsyncConnectorCallback;
 import org.glassfish.jersey.client.spi.Connector;
 import org.glassfish.jersey.message.internal.Statuses;
 
+
 public class JettyConnector implements Connector {
 
     private HTTP2Client client;
-    private SslContextFactory sslContextFactory;
+    private SslContextFactory.Client sslContextFactoryClient;
 
     /**
      * Needed for the JAX-RS connector creation.
@@ -55,7 +56,9 @@ public class JettyConnector implements Connector {
         client = new HTTP2Client();
 
         // Configure SSL for test. Ignore insecure certificates
-        sslContextFactory = new SslContextFactory(true);
+        //sslContextFactory =
+               // new SslContextFactory(true);
+        SslContextFactory.Client sslContextFactory = new SslContextFactory.Client();
         client.addBean(sslContextFactory);
 
         // Start client
@@ -80,7 +83,7 @@ public class JettyConnector implements Connector {
         Session session = createSession(host, port, secure);
 
         // Create HTTP headers
-        HttpFields headers = new HttpFields();
+        HttpFields.Mutable headers = HttpFields.build();
         request.getStringHeaders().forEach((key, value) -> {
             headers.put(key, value);
         });
@@ -88,7 +91,7 @@ public class JettyConnector implements Connector {
         headers.put("Host", host + ":" + port);
 
         // Create the request
-        Request jettyRequest = new Request(request.getMethod(), new HttpURI(request.getUri()), HttpVersion.HTTP_2,
+        Request jettyRequest = new Request(request.getMethod(), HttpURI.from(request.getUri()), HttpVersion.HTTP_2,
                 headers);
 
         // Stored metadata
@@ -144,6 +147,7 @@ public class JettyConnector implements Connector {
         throw new UnsupportedOperationException("Unimplemented method.");
     }
 
+
     @Override
     public String getName() {
         return client.getClass().getName() + "/" + Jetty.VERSION;
@@ -161,7 +165,7 @@ public class JettyConnector implements Connector {
     private Session createSession(String host, int port, boolean secure) {
         FuturePromise<Session> sessionPromise = new FuturePromise<>();
         if (secure) {
-            client.connect(sslContextFactory, new InetSocketAddress(host, port), new ServerSessionListener.Adapter(),
+            client.connect(sslContextFactoryClient, new InetSocketAddress(host, port), new ServerSessionListener.Adapter(),
                     sessionPromise);
         } else {
             client.connect(new InetSocketAddress(host, port), new ServerSessionListener.Adapter(), sessionPromise);
