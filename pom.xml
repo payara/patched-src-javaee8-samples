@@ -34,6 +34,14 @@
         <payara_domain>domain1</payara_domain>
         <parsson.version>1.1.1.payara-p1</parsson.version>
         <jersey.version>3.1.0-M7.payara-p1</jersey.version>
+        <jakartaee.api.version>10.0.0</jakartaee.api.version>
+        <servlet-api.version>6.0.0</servlet-api.version>
+        <jakarta.annotation.version>2.1.0</jakarta.annotation.version>
+        <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
+        <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
+        <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
+        <yasson.version>3.0.0-RC2</yasson.version>
+        <org.glassfish.tyrus.version>2.1.0.payara-p1</org.glassfish.tyrus.version>
     </properties>
 
     <repositories>
@@ -148,13 +156,18 @@
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>10.0.0</version>
+            <version>${jakartaee.api.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
-            <version>2.1.0</version>
+            <version>${jakarta.annotation.version}</version>
         </dependency>
 
         <!-- Test dependencies which can be used in sub-modules -->
@@ -199,55 +212,25 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>xmlunit</groupId>
-            <artifactId>xmlunit</artifactId>
-            <version>1.6</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.skyscreamer</groupId>
-            <artifactId>jsonassert</artifactId>
-            <version>1.5.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
             <version>2.33</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>rhino</groupId>
-            <artifactId>js</artifactId>
-            <version>1.7R2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20180813</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>1.7.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>4.0.0</version>
+            <version>${jakarta.xml.bind-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>4.0.0</version>
+            <version>${jaxb-runtime.version}</version>
         </dependency>
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
-            <version>3.1.0</version>
+            <version>${jakarta.ws.rs-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
@@ -267,7 +250,7 @@
         <dependency>
             <groupId>org.eclipse</groupId>
             <artifactId>yasson</artifactId>
-            <version>3.0.0-RC2</version>
+            <version>${yasson.version}</version>
         </dependency>
     </dependencies>
 
@@ -309,7 +292,7 @@
                     <dependency>
                         <groupId>jakarta.annotation</groupId>
                         <artifactId>jakarta.annotation-api</artifactId>
-                        <version>2.1.0</version>
+                        <version>${jakarta.annotation.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -429,7 +412,7 @@
                                 <dependency>
                                     <groupId>jakarta.annotation</groupId>
                                     <artifactId>jakarta.annotation-api</artifactId>
-                                    <version>2.1.0</version>
+                                    <version>${jakarta.annotation.version}</version>
                                 </dependency>
                             </dependencies>
                             <environmentVariables>
@@ -466,13 +449,13 @@
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-client</artifactId>
-                    <version>2.1.0.payara-p1</version>
+                    <version>${org.glassfish.tyrus.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-container-grizzly-client</artifactId>
-                    <version>2.1.0.payara-p1</version>
+                    <version>${org.glassfish.tyrus.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
@@ -611,19 +594,19 @@
                 <dependency>
                     <groupId>org.eclipse.parsson</groupId>
                     <artifactId>jakarta.json</artifactId>
-                    <version>1.1.1.payara-p1</version>
+                    <version>${parsson.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-client</artifactId>
-                    <version>2.1.0.payara-p1</version>
+                    <version>${org.glassfish.tyrus.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-container-grizzly-client</artifactId>
-                    <version>2.1.0.payara-p1</version>
+                    <version>${org.glassfish.tyrus.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
@@ -659,19 +642,19 @@
                 <dependency>
                     <groupId>org.eclipse.parsson</groupId>
                     <artifactId>jakarta.json</artifactId>
-                    <version>1.1.1.payara-p1</version>
+                    <version>${parsson.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-client</artifactId>
-                    <version>2.1.0.payara-p1</version>
+                    <version>${org.glassfish.tyrus.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
                     <groupId>org.glassfish.tyrus</groupId>
                     <artifactId>tyrus-container-grizzly-client</artifactId>
-                    <version>2.1.0.payara-p1</version>
+                    <version>${org.glassfish.tyrus.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
