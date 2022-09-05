@@ -32,7 +32,7 @@ public class CdiEmptyTest {
     BeanManager beanManager;
 
     /**
-     * After new spec for CDI 4.0, the interpretation of de empty beans changed from all
+     * New spec for CDI 4.0: The interpretation of the empty beans changed from all
      * to annotated by default. This means that in order to enable this test it is needed to change the assertions using
      * empty beans.xml
      */
