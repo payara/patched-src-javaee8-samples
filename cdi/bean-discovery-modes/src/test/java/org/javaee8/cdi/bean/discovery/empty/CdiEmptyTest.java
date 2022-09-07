@@ -1,6 +1,7 @@
 package org.javaee8.cdi.bean.discovery.empty;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Set;
 
@@ -31,12 +32,14 @@ public class CdiEmptyTest {
     BeanManager beanManager;
 
     /**
-     * Should work the same as 'all'.
+     * New spec for CDI 4.0: The interpretation of the empty beans changed from all
+     * to annotated by default. This means that in order to enable this test it is needed to change the assertions using
+     * empty beans.xml
      */
     @Test
     public void should_beans_be_injected() throws Exception {
         Set<Bean<?>> disabledBeans = beanManager.getBeans(CdiDisabledBean.class);
-        assertFalse("Instances of disabled bean expected.", disabledBeans.isEmpty());
+        assertTrue("Instances of disabled bean expected.", disabledBeans.isEmpty());
 
         Set<Bean<?>> enabledBeans = beanManager.getBeans(CdiEnabledBean.class);
         assertFalse("Instances of enabled bean expected.", enabledBeans.isEmpty());

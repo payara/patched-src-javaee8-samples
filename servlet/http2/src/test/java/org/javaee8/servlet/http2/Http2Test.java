@@ -4,19 +4,17 @@ import static org.jboss.shrinkwrap.api.ShrinkWrap.create;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
-import org.eclipse.jetty.client.HttpClient;
-import org.eclipse.jetty.http.HttpVersion;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -34,21 +32,9 @@ public class Http2Test {
     public static WebArchive createDeployment() {
         final WebArchive war = create(WebArchive.class).addClasses(Servlet.class)
                 .addAsWebResource(new File("src/main/webapp/images/payara-logo.jpg"), "images/payara-logo.jpg")
-                .addAsWebInfResource(new File("src/main/webapp/WEB-INF/web.xml"))
-                .addAsResource("project-defaults.yml"); // only for Thormtail;
+                .addAsWebInfResource(new File("src/main/webapp/WEB-INF/web.xml"));
         System.out.println("War file content: \n" + war.toString(true));
         return war;
-    }
-
-    @Before
-    public void setup() throws Exception {
-        client = new HttpClient();
-        client.start();
-    }
-
-    @After
-    public void cleanUp() throws Exception {
-        client.stop();
     }
 
     /**
@@ -71,7 +57,10 @@ public class Http2Test {
         testHttp2(basicUrl.toURI());
     }
 
-    private void testHttp2(URI uri) throws InterruptedException, ExecutionException, TimeoutException {
-        assertEquals("Request wasn't over HTTP/2", HttpVersion.HTTP_2, client.GET(uri).getVersion());
+    private void testHttp2(URI uri) throws InterruptedException, IOException {
+        HttpRequest request = HttpRequest.newBuilder().uri(uri).version(HttpClient.Version.HTTP_2).GET().build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        assertEquals("Request wasn't over HTTP/2", HttpClient.Version.HTTP_2.toString(),
+                response.version().toString());
     }
 }
