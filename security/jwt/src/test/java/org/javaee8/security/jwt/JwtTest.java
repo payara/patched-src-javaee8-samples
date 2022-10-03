@@ -76,7 +76,9 @@ public class JwtTest {
     @Deployment
     public static WebArchive createDeployment() {
         MavenResolverSystem RESOLVER = Maven.resolver();
-        File[] jjwtFiles = RESOLVER.resolve("io.jsonwebtoken:jjwt:0.6.0").withTransitivity().asFile();
+        File[] jjwtFiles = RESOLVER.resolve("io.jsonwebtoken:jjwt-api:0.11.5",
+                "io.jsonwebtoken:jjwt-impl:0.11.5",
+                "io.jsonwebtoken:jjwt-jackson:0.11.5").withTransitivity().asFile();
 
         return create(WebArchive.class)
                 .addPackage(ApplicationConfig.class.getPackage())
