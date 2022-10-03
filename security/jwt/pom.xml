@@ -13,14 +13,26 @@
     <name>Java EE 8 Samples: Security - JWT</name>
     
     <properties>
-        <version.jsonwebtoken>0.6.0</version.jsonwebtoken>
+        <version.jsonwebtoken>0.11.5</version.jsonwebtoken>
     </properties>
     
     <dependencies>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
+            <artifactId>jjwt-api</artifactId>
             <version>${version.jsonwebtoken}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${version.jsonwebtoken}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+            <version>${version.jsonwebtoken}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
     

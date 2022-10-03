@@ -37,8 +37,16 @@
  */
 package org.javaee8.security.jwt;
 
-import static org.javaee8.security.jwt.Constants.REMEMBERME_VALIDITY_SECONDS;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.io.Encoders;
+import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
+
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Set;
@@ -46,8 +54,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
 import static java.util.stream.Collectors.joining;
-import jakarta.annotation.PostConstruct;
+import static org.javaee8.security.jwt.Constants.REMEMBERME_VALIDITY_SECONDS;
 
 public class TokenProvider {
 
@@ -55,7 +64,9 @@ public class TokenProvider {
 
     private static final String AUTHORITIES_KEY = "auth";
 
-    private String secretKey;
+    private String secretString;
+
+    private SecretKey secretKey;
 
     private long tokenValidity;
 
@@ -64,7 +75,8 @@ public class TokenProvider {
     @PostConstruct
     public void init() {
         // load from config
-        this.secretKey = "my-secret-jwt-key";
+        this.secretString = "any-random-alphabetic-secret-jwt-key";
+        this.secretKey = Keys.hmacShaKeyFor(secretString.getBytes(StandardCharsets.UTF_8));
         this.tokenValidity = TimeUnit.HOURS.toMillis(10);   //10 hours
         this.tokenValidityForRememberMe = TimeUnit.SECONDS.toMillis(REMEMBERME_VALIDITY_SECONDS);   //24 hours
     }
@@ -73,17 +85,19 @@ public class TokenProvider {
         long now = (new Date()).getTime();
         long validity = rememberMe ? tokenValidityForRememberMe : tokenValidity;
 
+
         return Jwts.builder()
                 .setSubject(username)
                 .claim(AUTHORITIES_KEY, authorities.stream().collect(joining(",")))
-                .signWith(SignatureAlgorithm.HS512, secretKey)
+                .signWith(secretKey)
                 .setExpiration(new Date(now + validity))
                 .compact();
     }
 
     public JWTCredential getCredential(String token) {
-        Claims claims = Jwts.parser()
+        Claims claims = Jwts.parserBuilder()
                 .setSigningKey(secretKey)
+                .build()
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -97,9 +111,11 @@ public class TokenProvider {
 
     public boolean validateToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(authToken);
+            Jwts.parserBuilder()
+                    .setSigningKey(secretKey)
+                    .build().parseClaimsJws(authToken);
             return true;
-        } catch (SignatureException e) {
+        } catch (SecurityException e) {
             LOGGER.log(Level.INFO, "Invalid JWT signature: {0}", e.getMessage());
             return false;
         }

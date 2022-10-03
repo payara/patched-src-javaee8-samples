@@ -32,15 +32,15 @@
         <tomcat.version>9.0.12</tomcat.version>
         <thorntail.version>2.3.0.Final</thorntail.version>
         <payara_domain>domain1</payara_domain>
-        <parsson.version>1.1.1.payara-p1</parsson.version>
-        <jersey.version>3.1.0-M7.payara-p1</jersey.version>
+        <parsson.version>1.1.1</parsson.version>
+        <jersey.version>3.1.0-M8</jersey.version>
         <jakartaee.api.version>10.0.0</jakartaee.api.version>
         <servlet-api.version>6.0.0</servlet-api.version>
         <jakarta.annotation.version>2.1.1</jakarta.annotation.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
         <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
-        <yasson.version>3.0.0-RC2</yasson.version>
+        <yasson.version>3.0.2</yasson.version>
         <org.glassfish.tyrus.version>2.1.0.payara-p1</org.glassfish.tyrus.version>
     </properties>
 
