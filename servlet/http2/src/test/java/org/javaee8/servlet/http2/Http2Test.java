@@ -44,7 +44,7 @@ public class Http2Test {
      */
     @Test(timeout = 10000L)
     public void testHttp2ControlGroup() throws Exception {
-        testHttp2(new URI("https://http2.akamai.com/"));
+        testHttp2(new URI("https://linkedin.com/"));
     }
 
     /**
