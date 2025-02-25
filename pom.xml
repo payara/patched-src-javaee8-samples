@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.javaee8</groupId>
@@ -23,24 +23,24 @@
         <skipJSF>${skipTests}</skipJSF>
         <skipJACC>${skipTests}</skipJACC>
 
-        <payara.arquillian.version>3.0.alpha6</payara.arquillian.version>
+        <payara.arquillian.version>3.1</payara.arquillian.version>
 
         <!-- Application Server versions (these are downloaded and installed
             in these versions by Maven for the CI profiles) -->
-        <payara.version>6.2022.1.Alpha5-SNAPSHOT</payara.version>
+        <payara.version>7.2024.1.Alpha3</payara.version>
         <glassfish.version>5.0</glassfish.version>
         <tomcat.version>9.0.12</tomcat.version>
-        <thorntail.version>2.3.0.Final</thorntail.version>
+        <thorntail.version>2.7.0.Final</thorntail.version>
         <payara_domain>domain1</payara_domain>
-        <parsson.version>1.1.1</parsson.version>
-        <jersey.version>3.1.0-M8</jersey.version>
-        <jakartaee.api.version>10.0.0</jakartaee.api.version>
-        <servlet-api.version>6.0.0</servlet-api.version>
-        <jakarta.annotation.version>2.1.1</jakarta.annotation.version>
-        <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
-        <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
-        <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
-        <yasson.version>3.0.2</yasson.version>
+        <parsson.version>1.1.6</parsson.version>
+        <jersey.version>4.0.0-M2</jersey.version>
+        <jakartaee.api.version>11.0.0-M5</jakartaee.api.version>
+        <servlet-api.version>6.1.0</servlet-api.version>
+        <jakarta.annotation.version>3.0.0</jakarta.annotation.version>
+        <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
+        <jaxb-runtime.version>4.0.5</jaxb-runtime.version>
+        <jakarta.ws.rs-api.version>4.0.0</jakarta.ws.rs-api.version>
+        <yasson.version>3.0.4</yasson.version>
         <org.glassfish.tyrus.version>2.1.0.payara-p1</org.glassfish.tyrus.version>
     </properties>
 
@@ -293,6 +293,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <payara.home>${session.executionRootDirectory}/target/${payara.directory.name}</payara.home>
+                        <payara_domain>${payara_domain}</payara_domain>
+                    </systemPropertyVariables>
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>jakarta.annotation</groupId>
@@ -319,13 +325,15 @@
                         <requireMavenVersion>
                             <message>At least Maven in version
                                 ${maven.min.version} is
-                                required.</message>
+                                required.
+                            </message>
                             <version>${maven.min.version}</version>
                         </requireMavenVersion>
                         <requireJavaVersion>
                             <message>At least a JDK in version
                                 ${java.min.version} is
-                                required.</message>
+                                required.
+                            </message>
                             <version>${java.min.version}</version>
                         </requireJavaVersion>
                     </rules>
@@ -352,21 +360,22 @@
     </build>
 
 
-
     <!-- Profiles for the application servers against which the samples are run -->
 
 
     <profiles>
 
         <!-- ### PAYARA ### -->
-
-
         <profile>
             <id>payara-server-managed</id>
 
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+
+                <properties>
+                    <payara.directory.name>payara7</payara.directory.name>
+                </properties>
 
             <dependencies>
 
@@ -394,7 +403,9 @@
                                 </goals>
                                 <configuration>
                                     <outputDirectory>${session.executionRootDirectory}/target</outputDirectory>
-                                    <markersDirectory>${session.executionRootDirectory}/target/dependency-maven-plugin-markers</markersDirectory>
+                                    <markersDirectory>
+                                        ${session.executionRootDirectory}/target/dependency-maven-plugin-markers
+                                    </markersDirectory>
                                     <artifactItems>
                                         <artifactItem>
                                             <groupId>fish.payara.distributions</groupId>
@@ -421,11 +432,14 @@
                                 </dependency>
                             </dependencies>
                             <environmentVariables>
-                                <GLASSFISH_HOME>${session.executionRootDirectory}/target/payara6</GLASSFISH_HOME>
+                                <GLASSFISH_HOME>${session.executionRootDirectory}/target/${payara.directory.name}
+                                </GLASSFISH_HOME>
                             </environmentVariables>
                             <!-- This needs tuning -->
                             <systemPropertyVariables>
-                                <glassfishRemote_gfHome>${session.executionRootDirectory}/target/payara6</glassfishRemote_gfHome>
+                                <glassfishRemote_gfHome>
+                                    ${session.executionRootDirectory}/target/${payara.directory.name}
+                                </glassfishRemote_gfHome>
                                 <javaEEServer>payara-remote</javaEEServer>
                                 <arquillian.launch>payara</arquillian.launch>
                             </systemPropertyVariables>
@@ -574,15 +588,14 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <environmentVariables>
-                                <MICRO_JAR>${session.executionRootDirectory}/target/payara-micro-${payara.version}.jar</MICRO_JAR>
+                                <MICRO_JAR>${session.executionRootDirectory}/target/payara-micro-${payara.version}.jar
+                                </MICRO_JAR>
                             </environmentVariables>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
-
-
 
 
         <!-- ### GLASSFISH ### -->
@@ -712,8 +725,6 @@
         </profile>
 
 
-
-
         <!-- ### TOMCAT ### -->
 
         <profile>
@@ -834,7 +845,9 @@
                                             <version>${project.version}</version>
                                             <type>jar</type>
                                             <overWrite>true</overWrite>
-                                            <outputDirectory>${project.build.directory}/apache-tomcat-${tomcat.version}/conf</outputDirectory>
+                                            <outputDirectory>
+                                                ${project.build.directory}/apache-tomcat-${tomcat.version}/conf
+                                            </outputDirectory>
                                             <includes>tomcat-users.xml</includes>
                                         </artifactItem>
                                     </artifactItems>
@@ -848,7 +861,9 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <arquillian.launch>tomcat-ci-managed</arquillian.launch>
-                                <arquillian.tomcat.catalinaHome>${project.build.directory}/apache-tomcat-${tomcat.version}</arquillian.tomcat.catalinaHome>
+                                <arquillian.tomcat.catalinaHome>
+                                    ${project.build.directory}/apache-tomcat-${tomcat.version}
+                                </arquillian.tomcat.catalinaHome>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
