@@ -11,7 +11,7 @@
     <name>Java EE 8 Samples: root</name>
 
     <properties>
-        <java.min.version>11</java.min.version>
+        <java.min.version>21</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -23,25 +23,27 @@
         <skipJSF>${skipTests}</skipJSF>
         <skipJACC>${skipTests}</skipJACC>
 
-        <payara.arquillian.version>3.1</payara.arquillian.version>
+        <payara.arquillian.version>4.0.alpha2</payara.arquillian.version>
+
+        <shrinkwrap.version>3.3.3</shrinkwrap.version>
 
         <!-- Application Server versions (these are downloaded and installed
             in these versions by Maven for the CI profiles) -->
-        <payara.version>7.2024.1.Alpha3</payara.version>
+        <payara.version>7.2025.1.Alpha1-SNAPSHOT</payara.version>
         <glassfish.version>5.0</glassfish.version>
         <tomcat.version>9.0.12</tomcat.version>
         <thorntail.version>2.7.0.Final</thorntail.version>
         <payara_domain>domain1</payara_domain>
         <parsson.version>1.1.6</parsson.version>
         <jersey.version>4.0.0-M2</jersey.version>
-        <jakartaee.api.version>11.0.0-M5</jakartaee.api.version>
+        <jakartaee.api.version>11.0.0-RC1</jakartaee.api.version>
         <servlet-api.version>6.1.0</servlet-api.version>
         <jakarta.annotation.version>3.0.0</jakarta.annotation.version>
         <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
         <jaxb-runtime.version>4.0.5</jaxb-runtime.version>
         <jakarta.ws.rs-api.version>4.0.0</jakarta.ws.rs-api.version>
         <yasson.version>3.0.4</yasson.version>
-        <org.glassfish.tyrus.version>2.1.0.payara-p1</org.glassfish.tyrus.version>
+        <org.glassfish.tyrus.version>2.2.0</org.glassfish.tyrus.version>
     </properties>
 
     <repositories>
@@ -139,19 +141,19 @@
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
-                <version>1.7.0.Alpha12</version>
+                <version>1.9.3.Final</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
             <dependency>
                 <groupId>org.jboss.arquillian.container</groupId>
                 <artifactId>arquillian-container-test-api</artifactId>
-                <version>1.7.0.Alpha12</version>
+                <version>1.9.3.Final</version>
             </dependency>
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
-                <version>1.4.197</version>
+                <version>2.2.224</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -208,12 +210,14 @@
         <dependency>
             <groupId>org.jboss.shrinkwrap.resolver</groupId>
             <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+            <version>${shrinkwrap.version}</version>
             <scope>test</scope>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.jboss.shrinkwrap.resolver</groupId>
             <artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
+            <version>${shrinkwrap.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
