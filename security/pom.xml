@@ -13,8 +13,8 @@
     <name>Java EE 8 Samples: Security</name>
 
     <modules>
-        <!-- FISH-11628 Disabled temporarily
         <module>dynamic-rememberme</module>
+        <!-- FISH-11628 Disabled temporarily
         <module>jwt</module>-->
     </modules>
 
