@@ -44,11 +44,10 @@ public class ApplicationInit {
         HttpAuthenticationMechanism mechanism =
             createRef(
                 beanManager.resolve(
-                    beanManager.getBeans(HttpAuthenticationMechanism.class)
+                    beanManager.getBeans(HttpAuthenticationMechanism.class, BasicAuthenticationMechanismDefinition.BasicAuthenticationMechanism.Literal.INSTANCE)
                                .stream()
                                .filter(e -> !e.getBeanClass().equals(ApplicationInit.class))
                                .collect(toSet())), beanManager);
-        
         // We're telling the InterceptionFactory here to dynamically add the @RememberMeAnnotation
         // annotation with the supplied values.
         interceptionFactory.configure().add(
