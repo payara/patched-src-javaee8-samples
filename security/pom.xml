@@ -14,8 +14,7 @@
 
     <modules>
         <module>dynamic-rememberme</module>
-        <!-- FISH-11628 Disabled temporarily
-        <module>jwt</module>-->
+        <module>jwt</module>
     </modules>
 
     <dependencies>
