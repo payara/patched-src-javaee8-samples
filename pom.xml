@@ -110,11 +110,6 @@
         </repository>
 
         <repository>
-            <id>staged-jakarta-releases</id>
-            <url>https://jakarta.oss.sonatype.org/content/groups/staging/</url>
-        </repository>
-
-        <repository>
             <id>payara-nexus-artifacts</id>
             <url>https://nexus.payara.fish/repository/payara-artifacts</url>
         </repository>
