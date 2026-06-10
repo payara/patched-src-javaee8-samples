@@ -58,7 +58,7 @@ public class Http2Test {
      */
     @Test(timeout = 10000L)
     public void testHttp2ControlGroup() throws Exception {
-        testHttp2(new URI("https://linkedin.com/"));
+        testHttp2(new URI("https://nghttp2.org/"));
     }
 
     /**
