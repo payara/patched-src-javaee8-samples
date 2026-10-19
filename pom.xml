@@ -27,7 +27,7 @@
 
         <!-- Application Server versions (these are downloaded and installed
             in these versions by Maven for the CI profiles) -->
-        <payara.version>6.2022.1.Alpha5-SNAPSHOT</payara.version>
+        <payara.version>6.2025.11</payara.version>
         <glassfish.version>5.0</glassfish.version>
         <tomcat.version>9.0.12</tomcat.version>
         <thorntail.version>2.3.0.Final</thorntail.version>
